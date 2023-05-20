@@ -23,6 +23,7 @@ public class Main {
         int right = 3;
         int balance = 1500;
         int select;
+        int price;
         while (right > 0) {
 
             String userName, password;
@@ -36,21 +37,22 @@ public class Main {
                     System.out.println("1-Deposit\n" + "2-Withdrawel:\n" + "3- Balance report:\n" + "4-Quit");
                     System.out.println("Please select the thing you want to do ...");
                     select = input.nextInt();
-                    if (select == 1) {
-                        System.out.println("Amount Money : ");
-                        int price = input.nextInt();
-                        balance += price;
-
-                    } else if (select == 2) {
-                        System.out.println("Amount of money : ");
-                        int price = input.nextInt();
-                        if (price > balance) {
-                            System.out.println("You do not have enough bank balance!!");
-                        } else {
-                            balance -= price;
+                    switch (select) {
+                        case 1 -> {
+                            System.out.print("Amount of money you want to deposit:");
+                            price = input.nextInt();
+                            balance += price;
                         }
-                    } else if (select == 3) {
-                        System.out.println("Balance : " + balance);
+                        case 2 -> {
+                            System.out.print("Amount of money you want to withdraw:");
+                            price = input.nextInt();
+                            if (price > balance) {
+                                System.out.println("You do not have enough amoun of money..");
+                            } else {
+                                balance -= price;
+                            }
+                        }
+                        case 3 -> System.out.println("Balance : " + balance);
                     }
 
                 } while (select != 4);
